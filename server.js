@@ -10,17 +10,17 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//ROOT GET ROUTE HOMEPAGE
+//Homepage Route
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "index.html");
 });
 
-//GET ROUTE FOR USERS TO SEE NOTES PAGE
+//Notes Page Route
 app.get("/notes", (req, res) => {
   res.sendFile(__dirname + "/public/notes.html");
 });
 
-//GET ROUTE FOR JSON NOTES
+//JSON Get Route
 app.get("/api/notes", (req, res) => {
   fs.readFile(__dirname + "/db/db.json", "utf8", (error, data) => {
     if (error) {
@@ -32,7 +32,7 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
-//POST ROUTE TO READ JSON FILE AND ADD NEW NOTE
+//JSON Post Route
 app.post("/api/notes", (req, res) => {
   fs.readFile(__dirname + "/db/db.json", "utf8", (error, data) => {
     if (error) {
